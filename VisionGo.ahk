@@ -51,7 +51,7 @@ RET                 = `n
 TailleGoban_19      = 19x19
 TailleGoban_13      = 13x13
 TailleGoban_9       = 9x9
-Taille_Goban_Actuel = 19             ;Par d√©fault
+Taille_Goban_Actuel = 19             ;Par dÈfault
 Url_VisionGo        = http://atelierludique.free.fr/index.php?title=VisionGo 
 
 ; Ne pas changer ces valeurs, pour detecter la roulette de la souris
@@ -66,6 +66,8 @@ WM_PAINT=0x0F
 WM_CLOSE=0x10
 WM_NCDESTROY=0x82
 WM_PARENTNOTIFY=0x210
+
+goto passe_maj  ; il n'y a plus de maintenance pour les mises ‡ jour, cette partie est passÈe
 
 ; __Verif_Version_Recuperation_INI:
 IfExist, VisionGo.tmp
@@ -106,7 +108,7 @@ IfExist, VisionGo_INI.bak
 
   IniRead, VisionGo_Version              , VisionGo.ini, VisionGo, VisionGo_Version
   
-  TrayTip , VisionGo : Mise √† jour, VisionGo version %VisionGo_Version% √† √©tait install√©e avec succ√©s !, 10, 1 
+  TrayTip , VisionGo : Mise ‡ jour, VisionGo version %VisionGo_Version% ‡ Ètait installÈe avec succÈs !, 10, 1 
   FileDelete, VisionGo_INI.bak 
 }
 Else
@@ -115,7 +117,7 @@ Else
   IniRead, VisionGo_Ver_Internet, VisionGo.tmp, VisionGo, VisionGo_Version
   IF VisionGo_Ver_Internet = ERROR
     {
-       Msgbox,16,VisionGo :, Un probl√®me est survenu lors de la mise √† jour %RET%%RET% Veuillez S'il vous plait t√©l√©charger vous-m√™me la derni√®re version sur l'Atelier Ludique. %RET%%RET% et si possible me faire parvenir le probl√©me √† atelierludique@free.fr, Merci. 
+       Msgbox,16,VisionGo :, Un problËme est survenu lors de la mise ‡ jour %RET%%RET% Veuillez S'il vous plait tÈlÈcharger vous-mÍme la derniËre version sur l'Atelier Ludique. %RET%%RET% et si possible me faire parvenir le problÈme ‡ atelierludique@free.fr, Merci. 
        Run, http://atelierludique.free.fr
        ExitApp 
     }
@@ -123,7 +125,7 @@ Else
   {
     IF VisionGo_Ver_Internet > %VisionGo_Version%
   	{
-      MsgBox,64,VisionGo : Mise √† jour, Une version plus r√©cente de VisionGo existe. %RET%%RET%Cliquez sur OK pour l'installer
+      MsgBox,64,VisionGo : Mise ‡ jour, Une version plus rÈcente de VisionGo existe. %RET%%RET%Cliquez sur OK pour l'installer
   
       IfNotExist, %VG_Path_Ressource%\7z.exe
         UrlDownloadToFile, http://atelierludique.free.fr/000/PratiqueAHK/Ressource/7z.exe, %VG_Path_Ressource%\7z.exe
@@ -149,6 +151,8 @@ Else
   }
   FileDelete, VisionGo.tmp
 }
+
+passe_maj:
 
 ; __Selectionne_les_preferences_utilisateur:
 
@@ -216,7 +220,7 @@ IfWinActive , VisionGo GUI1 (KGS)
   
   If Test_Focus = Edit1
   {
-    If Sequence_a_Afficher = Coller-ici une s√©quence
+    If Sequence_a_Afficher = Coller-ici une sÈquence
     {
       ControlSetText, Edit1,,VisionGo GUI1 (KGS)
       Sequence_a_Afficher = 
@@ -301,23 +305,23 @@ Comment utilisez VisionGo ?
    1. Lancez VisionGo
    2. Lancez Cgoban
    3. Lancez une partie
-   4. Pendant la partie enfonc√© sans rel√¢cher [CTRL de droite]
-   5. Choisissez la couleur de d√©part avec [HAUT] pour Noir et [BAS] pour Blanc
-   6. Faite vos s√©quences
-   7. Rel√¢chez CTRL pour enlever les pierres de VisionGo ou pour recommencer 
+   4. Pendant la partie enfoncÈ sans rel‚cher [CTRL de droite]
+   5. Choisissez la couleur de dÈpart avec [HAUT] pour Noir et [BAS] pour Blanc
+   6. Faite vos sÈquences
+   7. Rel‚chez CTRL pour enlever les pierres de VisionGo ou pour recommencer 
 
-Voici les raccourci √† utiliser :
+Voici les raccourci ‡ utiliser :
 ~~~~~~~~~~~~~~~~
-  [CTRL] + [Roulette souris BAS] : Enl√®ve le dernier coup jou√©
-  [CTRL] + [Roulette souris HAUT] : Remets le dernier coup enlev√©
-  [CTRL] + [Boutton du Milieu de la souris] : Mets en phrase la s√©quence que vous venez de jouer pour le t'chat. Avant de cliquer mettez votre curseur sur le champs "Causettes" !
+  [CTRL] + [Roulette souris BAS] : EnlËve le dernier coup jouÈ
+  [CTRL] + [Roulette souris HAUT] : Remets le dernier coup enlevÈ
+  [CTRL] + [Boutton du Milieu de la souris] : Mets en phrase la sÈquence que vous venez de jouer pour le t'chat. Avant de cliquer mettez votre curseur sur le champs "Causettes" !
 
-  [Boutton du Milieu de la souris] : Copie une s√©lection du t'chat pour le mettre dans le champs "s√©quence", puis cliquez sur "Afficher"
-  [SHIFT] + [F11] : Renommer la fen√™tre en cours pour "KGS". Permet de faire apparait VisionGo pour d'autre logiciel que CGOBAN
-  [SHIFT] + [F12] : Faire apparaitre cette fen√™tre d'aide.
+  [Boutton du Milieu de la souris] : Copie une sÈlection du t'chat pour le mettre dans le champs "sÈquence", puis cliquez sur "Afficher"
+  [SHIFT] + [F11] : Renommer la fenÍtre en cours pour "KGS". Permet de faire apparait VisionGo pour d'autre logiciel que CGOBAN
+  [SHIFT] + [F12] : Faire apparaitre cette fenÍtre d'aide.
   
 
-                        Pour toutes id√©es, suggestions, aide, commentaire, report de bug : atelierludique@free.fr
+                        Pour toutes idÈes, suggestions, aide, commentaire, report de bug : atelierludique@free.fr
                                                                   http://atelierludique.free.fr
 
                                                                                                                                                                                 Scott Meyer ^^ 
@@ -340,7 +344,7 @@ VisionGoTimer_Gui_1:
 
       Gui, 1:Add , Radio      , ys             vGui1_Choix_Seq_Noir            ,Black
       Gui, 1:Add , Radio      , yp+13          vGui1_Choix_Seq_Blanc           ,White
-      Gui, 1:Add , Edit       , ys y2 R1 h25   vSequence_a_Afficher            ,Coller-ici une s√©quence
+      Gui, 1:Add , Edit       , ys y2 R1 h25   vSequence_a_Afficher            ,Coller-ici une sÈquence
       Gui, 1:Add , DropDownList,ys y2  w70     vVitesse_Sequence               ,Lent|Moyen||Rapide
   	  Gui, 1:Add , Button	    , ys y1 h25      gAffiche_Sequence_Script        ,Afficher / Cacher
 
@@ -356,7 +360,7 @@ VisionGoTimer_Gui_1:
       
       VisionGo_Gui1_UneFois = Stop
       
-      if Vitesse_Sequence_TMP = Lent    ; M√©morise le choix de la rapidit√© d'affichage 
+      if Vitesse_Sequence_TMP = Lent    ; MÈmorise le choix de la rapiditÈ d'affichage 
         GuiControl, Choose, ComboBox2, |1
       Else if Vitesse_Sequence_TMP = Moyen
         GuiControl, Choose, ComboBox2, |2
@@ -369,7 +373,7 @@ VisionGoTimer_Gui_1:
         Sequence_TMP =
       }
         
-      if Taille_Goban_Valeur_TMP = %TailleGoban_19%    ; M√©morise le choix de la taille du goban pour quand Gui1 sera d√©truit et relance le test si le calibrage est fait.
+      if Taille_Goban_Valeur_TMP = %TailleGoban_19%    ; MÈmorise le choix de la taille du goban pour quand Gui1 sera dÈtruit et relance le test si le calibrage est fait.
         GuiControl, Choose, ComboBox1, |1
       Else if Taille_Goban_Valeur_TMP = %TailleGoban_13%
         GuiControl, Choose, ComboBox1, |2
@@ -385,7 +389,7 @@ VisionGoTimer_Gui_1:
     Gui, 1:Submit ,NoHide
     Taille_Goban_Valeur_TMP = %Taille_Goban_Valeur%
     
-    If (Sequence_a_Afficher <> "" OR Sequence_a_Afficher <> "Coller-ici une s√©quence")
+    If (Sequence_a_Afficher <> "" OR Sequence_a_Afficher <> "Coller-ici une sÈquence")
       Sequence_TMP = %Sequence_a_Afficher%
     
     Vitesse_Sequence_TMP = %Vitesse_Sequence%
@@ -411,7 +415,7 @@ IfWinNotExist, KGS Transparent
     IniRead, VisionGo_Taille_Goban , VisionGo.ini, VisionGo, VisionGo_9x9
     
 
-  Loop, parse, VisionGo_Taille_Goban, |,   ; Mets en variable les coordonn√©es du calibrage
+  Loop, parse, VisionGo_Taille_Goban, |,   ; Mets en variable les coordonnÈes du calibrage
   {
     If A_index = 1
       Goban_Reference_X  = %A_LoopField%
@@ -428,9 +432,9 @@ IfWinNotExist, KGS Transparent
   Else
   Sleep_ms = 0
   
-  If (Sequence_a_Afficher = "" OR Sequence_a_Afficher = "Coller-ici une s√©quence")
+  If (Sequence_a_Afficher = "" OR Sequence_a_Afficher = "Coller-ici une sÈquence")
   {
-    MsgBox,64,VisionGo : Information,Veuillez entr√©e une s√©quence comme ci-dessous, Choisir la couleur de d√©part et cliquez sur le bouton "AFFICHER" :%RET%%RET%Exemple :%RET%d17 d15 c15 c14 c16 d13 f17 c10          <- S√©quence donn√© par CGOBAN %RET%%RET%ou%RET%%RET%Exemple :%RET%B:L12 - W:L11 - B:K9 - W:M9 - B:O12 - W:N14          <- S√©quence donn√© par VisionGo%RET%%RET%Merci 
+    MsgBox,64,VisionGo : Information,Veuillez entrÈe une sÈquence comme ci-dessous, Choisir la couleur de dÈpart et cliquez sur le bouton "AFFICHER" :%RET%%RET%Exemple :%RET%d17 d15 c15 c14 c16 d13 f17 c10          <- SÈquence donnÈ par CGOBAN %RET%%RET%ou%RET%%RET%Exemple :%RET%B:L12 - W:L11 - B:K9 - W:M9 - B:O12 - W:N14          <- SÈquence donnÈ par VisionGo%RET%%RET%Merci 
     Return
   }
   Else
@@ -440,7 +444,7 @@ IfWinNotExist, KGS Transparent
     
     if InStr(Sequence_a_Afficher,"b:") OR InStr(Sequence_a_Afficher,"w:")	   ; sequence de VisionGo a afficher
     {
-      Loop, parse, Sequence_a_Afficher,-                     ; s√©pare les coups de la sequence grace au "-"
+      Loop, parse, Sequence_a_Afficher,-                     ; sÈpare les coups de la sequence grace au "-"
       {
         Find_1 = % InStr(A_LoopField,":", CaseSensitive = false, StartingPos = 1)  ; trouve l emplacement car il peut y avoir un espace en debut 
         StringLeft, Color_Sequence, A_LoopField, (Find_1 - 1)     ; prends la couleur
@@ -517,7 +521,7 @@ VG_Gui1_Button_Calibrage:
   Goto, GUI_2_CALIBRAGE
 return
 
-Taille_Goban:  ; test si le calibrage est fait et renseigne sur les param√©tres de taille de goban selectionner par l'User
+Taille_Goban:  ; test si le calibrage est fait et renseigne sur les paramÈtres de taille de goban selectionner par l'User
   Gui, 1:Submit ,NoHide
   
   If Taille_Goban_Valeur = %TailleGoban_19%
@@ -549,13 +553,13 @@ GUI_2_CALIBRAGE:
   Gui, 2:font, bold s8, tahoma
   Gui, 2:Add , Text   , w720 Center cRed -background     ,CALIBRAGE
   Gui, 2:Add , Picture, section vVG_Cal_Illus            ,%VG_Path_Images%\Calibrage\%VG_Illus_Affiche_A%1.png
-  Gui, 2:Add , Text   , section ys w350 Center           ,Merci de suivre les instructions ci-dessous %RET%pour fournir 2 points rep√©res: 
+  Gui, 2:Add , Text   , section ys w350 Center           ,Merci de suivre les instructions ci-dessous %RET%pour fournir 2 points repÈres: 
   Gui, 2:Add , Text   , w350 Center cRed  -background    ,AVEZ VOUS BIEN OUVERT UNE PARTIE DE LA TAILLE : %Taille_Goban_Actuel%x%Taille_Goban_Actuel% ?
-  Gui, 2:Add , Text   , yp+20 Center w350                ,Positionnez le curseur de la souris le plus exactement possible √† l'intersection des lignes ! ( au centre ) 
+  Gui, 2:Add , Text   , yp+20 Center w350                ,Positionnez le curseur de la souris le plus exactement possible ‡ l'intersection des lignes ! ( au centre ) 
   Gui, 2:Add , Text   , w350 cRed center vVG_Cal_Info    ,Le coin NORD OUEST
   Gui, 2:Add , Picture, x520 y160 vVG_Cal_Repere         ,%VG_Path_Images%\Calibrage\%VG_Illus_Affiche_B%1.png
   Gui, 2:Add , Text   , xs yp+100 w360 center            ,Validez avec :
-  Gui, 2:Add , Text   , cRed w350 center                 ,MAINTENEZ [CTRL] de droite ENFONC√©%RET%%RET%+ CLIC GAUCHE DE LA SOURIS 
+  Gui, 2:Add , Text   , cRed w350 center                 ,MAINTENEZ [CTRL] de droite ENFONCÈ%RET%%RET%+ CLIC GAUCHE DE LA SOURIS 
   Gui, 2:Add , Button	, w350 h25 yp+75 gVG_Gui_FermerTout,ANNULER
   Gui, 2:Show         , NoActivate                       ,VisionGo - Configuration (KGS)  
   
@@ -616,10 +620,10 @@ VG_GUI_5_CONFIGURATION:
   Gui, 5:Add , Text     , section xs                                     ,Couleur du marquage des pierres (1,2,3,...) :
   Gui, 5:Add , Edit     , ys r1 h25 x270 W100 vVG_Couleur_Marquage Center,%VG_Couleur_Marquage%  
 
-  Gui, 5:Add , Text     , section xs                                     ,Taille de l'√©criture du marquage (d√©faut 16) :
+  Gui, 5:Add , Text     , section xs                                     ,Taille de l'Ècriture du marquage (dÈfaut 16) :
   Gui, 5:Add , Edit     , ys r1  x270 W100 vVisionGo_Taille_Text_Marq Center ,%VisionGo_Taille_Text_Marq%  
 
-  Gui, 5:Add , Text     , section xs                                     ,Souhaitez vous des pierres textur√© ? :
+  Gui, 5:Add , Text     , section xs                                     ,Souhaitez vous des pierres texturÈ ? :
   Gui, 5:Add , DropDownList,ys   x270 w100 vVisionGo_Pierre_Texture      ,%String_Choix_Texture%
 
   Gui, 5:Add , Text     , section xs  w410                               ,Pour les couleurs vous pouvez mettre soit (Red, Navy, Black, Teal,...) ou leur correspondance en valeur HTML (ne pas mettre le # juste les chiffres, exemple : B8C88C).
@@ -661,13 +665,13 @@ ExitApp
 
 VisionGoTimer:
 GetKeyState, statusCTRL, RCTRL
-if statusCTRL = D                                ; CTRL de droite enfonc√©
+if statusCTRL = D                                ; CTRL de droite enfoncÈ
 {
 
   IfWinExist ,VisionGo - Configuration (KGS)
   {
     GetKeyState, statusLButton, LButton
-    If statusLButton = D                      ; si touche enfonc√©
+    If statusLButton = D                      ; si touche enfoncÈ
     {
       KeyWait, LButton                       ; attends que la touche soit relacher
 
@@ -707,7 +711,7 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
       Gui, 3:font, bold s8  , tahoma
       Gui, 3:Add , Picture  ,                        , %VG_Path_Images%\IconeGo.ICO
       Gui, 3:Add , Text     , x220 y15               , VisionGo
-      Gui, 3:Add , Text     , w470 cRed   xs +center , GARDEZ TOUJOURS [CTRL] ENFONCE ! RELACHEZ POUR EFFACER OU RECOMMENCER%RET%%RET%1) Choisissez une couleur de d√©part %RET%2) Cliquez sur le Goban pour poser une pierre
+      Gui, 3:Add , Text     , w470 cRed   xs +center , GARDEZ TOUJOURS [CTRL] ENFONCE ! RELACHEZ POUR EFFACER OU RECOMMENCER%RET%%RET%1) Choisissez une couleur de dÈpart %RET%2) Cliquez sur le Goban pour poser une pierre
       Gui, 3:Add , Text     , x250 y160 cBlack       , [CTRL]+ [HAUT] pour NOIR
       Gui, 3:Add , Text     , x250 y295 cWhite       , [CTRL]+ [BAS]  pour BLANC
       Gui, 3:Add , Picture  , x80 y105                , %VG_Path_Images%\Go_Pierre_BlancNoir.png
@@ -719,19 +723,19 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
     
     If VisionGoChoix = 
     {
-      if GetKeyState("UP", "D")         ; Fl√©che HAUT du curseur clavier enfonc√©
+      if GetKeyState("UP", "D")         ; FlÈche HAUT du curseur clavier enfoncÈ
         Gosub, VisionGoChoixNoir
       
-      if GetKeyState("DOWN", "D")       ; Fl√©che BAS du curseur clavier enfonc√©
+      if GetKeyState("DOWN", "D")       ; FlÈche BAS du curseur clavier enfoncÈ
         Gosub, VisionGoChoixBlanc
     }
     
 ; #######################  SIMULE LA ROULETTRE DE LA SOURIS POUR LA FONCTION UNDO
 
 ; __WHEEL_DOWN:
-    If (VisionGoChoix <>"" AND List_Coup_Jouer <>"")       ; un choix Couleur √† √©tait fait + il y a eu au moins un coup de jouer
+    If (VisionGoChoix <>"" AND List_Coup_Jouer <>"")       ; un choix Couleur ‡ Ètait fait + il y a eu au moins un coup de jouer
     {
-      if EtatWheelDown <> %Check_EtatWheelDown%                ; La roulette de la souris BAS √† √©tait tourn√©e
+      if EtatWheelDown <> %Check_EtatWheelDown%                ; La roulette de la souris BAS ‡ Ètait tournÈe
       {
         StaticDelete_IMG = Static%Last_Static%  
         StaticDelete_TXT = % "Static"Last_Static - 1 
@@ -743,7 +747,7 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
         ;GuiControl, 4:Hide, % "Static" Last_Static - 1         ; Cache l image de la pierre 
         
         Last_Static := Last_Static - 2                         ; Decompte la derniere pierre enlever
-        Incrementation -= 1                                    ; Chiffre de la prochaine pierre pos√© diminu√© de 1  
+        Incrementation -= 1                                    ; Chiffre de la prochaine pierre posÈ diminuÈ de 1  
         
         if Incrementation < 0
           Incrementation = 0
@@ -753,7 +757,7 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
         Else
           VisionGoChoix = %VG_File_Pierre_Blanc%
         
-        IfNotInString, List_Coup_Jouer,-                     ; Si dans "coups m√©moris√©" il n'y a pas de "-" c'est qu'il n'y a eu qu'un seul coup de jouer
+        IfNotInString, List_Coup_Jouer,-                     ; Si dans "coups mÈmorisÈ" il n'y a pas de "-" c'est qu'il n'y a eu qu'un seul coup de jouer
         {
           If Liste_Undo =
             Liste_Undo = %List_Coup_Jouer%
@@ -764,10 +768,10 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
         }  
         Else                                                 ; Sinon, c'est qu'il y a eu plusieurs coup de jouer
         {
-          Loop, parse, List_Coup_Jouer,-                     ; s√©pare les coups jouer grace au "-"
+          Loop, parse, List_Coup_Jouer,-                     ; sÈpare les coups jouer grace au "-"
             Nombre_de_Pierre = %A_index%
 
-          Loop, parse, List_Coup_Jouer,-                     ; s√©pare les coups jouer grace au "-"
+          Loop, parse, List_Coup_Jouer,-                     ; sÈpare les coups jouer grace au "-"
           {
             If 1fois = 
             {
@@ -851,7 +855,7 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
       {
         KeyWait, LButton     ; attends que le bouon de la souris soit relacher
         
-        If Liste_Undo <>  ; Si liste undo pleine, l√† vider quand c'est une nouvelle sequence de coup
+        If Liste_Undo <>  ; Si liste undo pleine, l‡ vider quand c'est une nouvelle sequence de coup
           Liste_Undo =  
 		  
 		CoordMode, Mouse, Client
@@ -870,7 +874,7 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
           IniRead, VisionGo_Taille_Goban , VisionGo.ini, VisionGo, VisionGo_9x9
           
  
-        Loop, parse, VisionGo_Taille_Goban, |,   ; Mets en variable les coordonn√©es du calibrage
+        Loop, parse, VisionGo_Taille_Goban, |,   ; Mets en variable les coordonnÈes du calibrage
         {
           If A_index = 1
             Goban_Reference_X  = %A_LoopField%
@@ -887,16 +891,16 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
           If (VG_MouseX_Cap > Goban_Reference_X + (Taille_Goban_Actuel * VG_Goban_Taille_Case) - (VG_Goban_Taille_Case / 2))
           {
             Ne_Pas_Poser = NON
-            Break    ; Si la souris d√©passe le goban √† droite de + de la moitier de la derni√®re case alors RIEN
+            Break    ; Si la souris dÈpasse le goban ‡ droite de + de la moitier de la derniËre case alors RIEN
           }
           
           If (VG_MouseX_Cap < Goban_Reference_X  - (VG_Goban_Taille_Case / 2))
           {
             Ne_Pas_Poser = NON
-            Break    ; Si la souris d√©passe le goban √† gauche de + de la moitier de la premi√®re case alors RIEN
+            Break    ; Si la souris dÈpasse le goban ‡ gauche de + de la moitier de la premiËre case alors RIEN
           }
           
-          If A_Index = %Taille_Goban_Actuel%  ; Trouve la derni√®re ligne a droite
+          If A_Index = %Taille_Goban_Actuel%  ; Trouve la derniËre ligne a droite
           {
             Ligne_VERTICALE_Coord := Goban_Reference_X + ((Taille_Goban_Actuel - 1) * VG_Goban_Taille_Case) 
             VG_A_Index = %A_Index%
@@ -904,7 +908,7 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
             Break
           }  
           
-          If VG_MouseX_Cap < %Goban_Reference_X%    ; Test si c'est la premi√®re ligne ?
+          If VG_MouseX_Cap < %Goban_Reference_X%    ; Test si c'est la premiËre ligne ?
           {
             Ligne_VERTICALE_Coord = %Goban_Reference_X%
             VG_A_Index = %A_Index%
@@ -914,10 +918,10 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
           Else if (VG_MouseX_Cap < (Goban_Reference_X + (A_Index * VG_Goban_Taille_Case)))    ; test les lignes suivantes
           {
             Calc_Ligne := Goban_Reference_X + (A_Index * VG_Goban_Taille_Case) - (VG_Goban_Taille_Case / 2) 
-            if VG_MouseX_Cap < %Calc_Ligne%  ; Quand les coordonn√©es du nb de case d√©passe Capture souris, test pour si ligne pr√©c√©dente ou suivante
+            if VG_MouseX_Cap < %Calc_Ligne%  ; Quand les coordonnÈes du nb de case dÈpasse Capture souris, test pour si ligne prÈcÈdente ou suivante
             {
               VG_A_Index := A_index - 1           
-              Ligne_VERTICALE_Coord  := Goban_Reference_X + (VG_A_Index * VG_Goban_Taille_Case) ; ligne pr√©c√©dente
+              Ligne_VERTICALE_Coord  := Goban_Reference_X + (VG_A_Index * VG_Goban_Taille_Case) ; ligne prÈcÈdente
               VG_A_Index = %A_Index%
               Gosub , Defini_Coord_Verticale
               Break    
@@ -939,16 +943,16 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
           If (VG_MouseY_Cap > Goban_Reference_Y + (Taille_Goban_Actuel * VG_Goban_Taille_Case) - (VG_Goban_Taille_Case / 2))
           {
             Ne_Pas_Poser = NON
-            Break    ; Si la souris d√©passe le goban en bas de + de la moitier de la derni√®re case alors RIEN
+            Break    ; Si la souris dÈpasse le goban en bas de + de la moitier de la derniËre case alors RIEN
           }  
 
           If (VG_MouseY_Cap < Goban_Reference_Y  - (VG_Goban_Taille_Case / 2))
           {
             Ne_Pas_Poser = NON
-            Break    ; Si la souris d√©passe le goban en haut de + de la moitier de la premi√®re case alors RIEN
+            Break    ; Si la souris dÈpasse le goban en haut de + de la moitier de la premiËre case alors RIEN
           }
                     
-          If A_Index = %Taille_Goban_Actuel%  ; Trouve la derni√®re ligne du bas
+          If A_Index = %Taille_Goban_Actuel%  ; Trouve la derniËre ligne du bas
           {
             Ligne_HORIZONTALE_Coord := Goban_Reference_Y + ((Taille_Goban_Actuel - 1) * VG_Goban_Taille_Case) 
             VG_A_Index = %A_Index%
@@ -956,7 +960,7 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
             Break
           }  
           
-          If VG_MouseY_Cap < %Goban_Reference_Y%    ; Test si c'est la premi√®re ligne ?
+          If VG_MouseY_Cap < %Goban_Reference_Y%    ; Test si c'est la premiËre ligne ?
           {
             Ligne_HORIZONTALE_Coord = %Goban_Reference_Y%
             VG_A_Index = %A_Index%
@@ -966,10 +970,10 @@ if statusCTRL = D                                ; CTRL de droite enfonc√©
           Else if (VG_MouseY_Cap < (Goban_Reference_Y + (A_Index * VG_Goban_Taille_Case)))    ; test les lignes suivantes
           {
             Calc_Ligne := Goban_Reference_Y + (A_Index * VG_Goban_Taille_Case) - (VG_Goban_Taille_Case / 2) 
-            if VG_MouseY_Cap < %Calc_Ligne%  ; Quand les coordonn√©es du nb de case d√©passe Capture souris, test pour si ligne pr√©c√©dente ou suivante
+            if VG_MouseY_Cap < %Calc_Ligne%  ; Quand les coordonnÈes du nb de case dÈpasse Capture souris, test pour si ligne prÈcÈdente ou suivante
             {
               VG_A_Index := A_index - 1           
-              Ligne_HORIZONTALE_Coord  := Goban_Reference_Y + (VG_A_Index * VG_Goban_Taille_Case) ; ligne pr√©c√©dente
+              Ligne_HORIZONTALE_Coord  := Goban_Reference_Y + (VG_A_Index * VG_Goban_Taille_Case) ; ligne prÈcÈdente
               VG_A_Index = %A_Index%
               Gosub , Defini_Coord_Horizontale
               Break    
